@@ -1,0 +1,14 @@
+[Unit]
+Description=Consume Zeek data from Kafka as json, Publish Zeek data to kafka as cef
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/confluent-kafka-python/
+ExecStart=/usr/bin/python3 /opt/confluent-kafka-python/zeek_json2cef.py
+Restart=always
+RestartSec=4
+
+[Install]
+WantedBy=multi-user.target
